@@ -11,8 +11,8 @@
 # Select what modules you would like enabled.
 # The second line of modules may depend on options set by modules in the first line.
 # These dependencies are noted on the respective module's README.md.
-zmodules=(directory environment git history input utility meta custom \
-          syntax-highlighting history-substring-search prompt completion)
+zmodules=(directory environment git git-info history input utility meta custom craftops \
+          spectrum syntax-highlighting history-substring-search prompt completion)
 
 
 ###################
@@ -24,7 +24,7 @@ zmodules=(directory environment git history input utility meta custom \
 #
 
 # Set your desired prompt here
-zprompt_theme='steeef'
+zprompt_theme='mizzen'
 
 #
 # Completion
@@ -47,7 +47,7 @@ zprompt_theme='steeef'
 #
 
 # Set the string below to the desired terminal title format string.
-# The terminal title is redrawn upon directory change, however, variables like 
+# The terminal title is redrawn upon directory change, however, variables like
 # ${PWD} are only evaluated once. Use prompt expansion strings for dynamic data:
 #   http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # The example below uses the following format: 'username@host:/current/directory'
