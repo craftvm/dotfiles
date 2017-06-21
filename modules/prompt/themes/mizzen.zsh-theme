@@ -50,7 +50,7 @@ prompt_mizzen_precmd() {
   zle -N zle-line-finish
 
   PROMPT='$(mizzen_user)$(mizzen_jobs)$(mizzen_vimode)$(mizzen_status) '
-  RPROMPT='$(mizzen_path)'
+  RPROMPT='@%m $(mizzen_path)'
 }
 
 prompt_mizzen_setup() {
