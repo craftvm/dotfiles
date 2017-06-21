@@ -39,35 +39,6 @@ mizzen_path() {
   print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
 }
 
-git_branch_name() {
-  local branch_name="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-  [[ -n $branch_name ]] && print "$branch_name"
-}
-
-git_repo_status(){
-  local rs="$(command git status --porcelain -b)"
-
-  if $(print "$rs" | grep -v '^##' &> /dev/null); then # is dirty
-    print "%F{red}"
-  elif $(print "$rs" | grep '^## .*diverged' &> /dev/null); then # has diverged
-    print "%F{red}"
-  elif $(print "$rs" | grep '^## .*behind' &> /dev/null); then # is behind
-    print "%F{11}"
-  elif $(print "$rs" | grep '^## .*ahead' &> /dev/null); then # is ahead
-    print "%f"
-  else # is clean
-    print "%F{green}"
-  fi
-}
-
-mizzen_git() {
-  local bname=$(git_branch_name)
-  if [[ -n ${bname} ]]; then
-    local infos="$(git_repo_status)${bname}%f"
-    print " $infos"
-  fi
-}
-
 function zle-line-init zle-line-finish zle-keymap-select {
   zle reset-prompt
   zle -R
@@ -79,7 +50,7 @@ prompt_mizzen_precmd() {
   zle -N zle-line-finish
 
   PROMPT='$(mizzen_user)$(mizzen_jobs)$(mizzen_vimode)$(mizzen_status) '
-  RPROMPT='$(mizzen_path)$(mizzen_git)'
+  RPROMPT='$(mizzen_path)'
 }
 
 prompt_mizzen_setup() {
